@@ -13,9 +13,12 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -27,6 +30,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import top.vitafresh.uunitconverter.ui.theme.UUnitConverterTheme
+import kotlin.math.exp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,6 +39,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             UUnitConverterTheme {
 //                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 //                    Greeting(
 //                        name = "Android",
@@ -52,7 +57,7 @@ class MainActivity : ComponentActivity() {
 fun UnitConverter(
 ) {
     Column(
-        modifier = Modifier,
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -72,8 +77,22 @@ fun UnitConverter(
                         contentDescription = "Arrow Down (just description)"
                     )
                 }
-
+                DropdownMenu(expanded = false, onDismissRequest = {/* TODO */ }) {
+                    DropdownMenuItem(
+                        text = { Text("Centimeters") },
+                        onClick = {})
+                    DropdownMenuItem(
+                        text = { Text("Meters") },
+                        onClick = {})
+                    DropdownMenuItem(
+                        text = { Text("Melimeters") },
+                        onClick = {})
+                    DropdownMenuItem(
+                        text = { Text("Feet") },
+                        onClick = {})
+                }
             }
+            Spacer(modifier = Modifier.width(16.dp))
             Box {
                 Button(onClick = { /* TO DO */ }) {
                     Text(text = "Select")
@@ -81,6 +100,20 @@ fun UnitConverter(
                         Icons.Default.ArrowDropDown,
                         contentDescription = "Arrow Down (just description)"
                     )
+                }
+                DropdownMenu(expanded = false, onDismissRequest = {/* TODO */ }) {
+                    DropdownMenuItem(
+                        text = { Text("Centimeters") },
+                        onClick = {})
+                    DropdownMenuItem(
+                        text = { Text("Meters") },
+                        onClick = {})
+                    DropdownMenuItem(
+                        text = { Text("Melimeters") },
+                        onClick = {})
+                    DropdownMenuItem(
+                        text = { Text("Feet") },
+                        onClick = {})
                 }
             }
 
@@ -105,19 +138,20 @@ fun UnitConverter(
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
 @Preview(showBackground = true)
 @Composable
 fun UnitConverterPreview() {
     UnitConverter()
 }
+
+
+//@Composable
+//fun Greeting(name: String, modifier: Modifier = Modifier) {
+//    Text(
+//        text = "Hello $name!",
+//        modifier = modifier
+//    )
+//}
 
 //@Preview(showBackground = true)
 //@Composable
